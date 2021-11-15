@@ -13,7 +13,9 @@ class Elevator:
         self.getStopTime = Elevator['_stopTime']
         self.call = []
 
-
+    def __str__(self):
+        string = "ID: " , self.getID , ", Speed: " , self.getSpeed, ", Min floor: " ,self.getMinFloor, ", Max floor: " ,self.getMaxFloor, ", Time for close: " ,self.getTimeForClose ,", Time for open: " , self.getTimeForOpen,
+        ", Start time: " ,self.getStartTime, ", Stop time: " , self.getStopTime
 
 class Building:
     def __init__(self,Building):
@@ -21,6 +23,6 @@ class Building:
         self.getMaxFloor = Building['_maxFloor']
         self.elev = []
 
-    def str(self):
-        s = "minFloor: ", self.getMinFloor, ", maxFloor: ", self.getMaxFloor, ", numOfElevators: ", len(self.elev)
-        return s
+    def __str__(self):
+        string = "Min floor: ", self.getMinFloor, ", Max floor: ", self.getMaxFloor, ", List of elevators: ", self.elev
+        return string
