@@ -11,8 +11,16 @@ class Elevator:
         self.getTimeForOpen = Elevator['_openTime']
         self.getStartTime = Elevator['_startTime']
         self.getStopTime = Elevator['_stopTime']
+        self.call = []
+
+
+
+class Building:
+    def __init__(self,Building):
+        self.getMinFloor = Building['_minFloor']
+        self.getMaxFloor = Building['_maxFloor']
         self.elev = []
 
-
-
-
+    def str(self):
+        s = "minFloor: ", self.getMinFloor, ", maxFloor: ", self.getMaxFloor, ", numOfElevators: ", len(self.elev)
+        return s
