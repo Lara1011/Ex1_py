@@ -8,6 +8,7 @@ class Building:
         # this elev List holds the info for each elevator in this building
         self.elev = []
 
+
     def __str__(self):
         string = "Min floor: ", self.getMinFloor, ", Max floor: ", self.getMaxFloor, ", List of elevators: ", self.elev
         return string
