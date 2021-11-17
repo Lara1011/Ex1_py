@@ -1,3 +1,4 @@
+from csv import writer
 import pandas as pd
 import numpy as np
 from Building import Building
@@ -20,3 +21,13 @@ def LoadBuilding(path):
                 my_building.elev.append(Elevator(my_elev))
     except:
         print("ERROR: This is not a JSON file !")
+
+def LoadOutput(call_row, path):
+    with open(path, 'a+', newline='') as write_obj:
+        csv_writer = writer(write_obj)
+        csv_writer.writerow(call_row)
+
+def Time(Elevator, src, dest):
+    time = Elevator.getTimeForClose + Elevator.getStartTime + (abs(src-dest)/Elevator.getSpeed) \
+           + Elevator.getStopTime + Elevator.getTimeForOpen
+    return time
