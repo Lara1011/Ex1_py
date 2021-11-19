@@ -45,7 +45,7 @@ __Install Pandas:__
 1) Type in the command "pip install manager"
 2) Once finished, type "pip install pandas"
 
-__How To Run:__
+__How To Run:__ <br>
 In cmd, the main should get `java -jar Ex1_checker_V1.2_obf.jar <IDs, json, calls, log_out>`
 IDs:123456789,987654321,22222222
 json: a file name such as B1.json - B5.json (or any other such json)
