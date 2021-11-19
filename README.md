@@ -53,5 +53,8 @@ json: a file name such as B1.json - B5.json (or any other such json)
 cals: a file name to a call log such as Call_a.csv = Call_d.csv
 log_out: the name of the file with all the simulation log.
 
+---
+
 ## UML:
+![Diagram](https://user-images.githubusercontent.com/75528759/142690291-5a947826-ae2a-432e-9944-bec900324452.png)
 
