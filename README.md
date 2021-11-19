@@ -19,4 +19,4 @@ Firstly, we read the data from 3 files:
 2) csv file that contains all the info about the calls: time of the call, source floor, destination floor, and the elevator the call is allocated to.
 3) Another csv file, output, but this one is empty, we fill it after allocate each call to a specific elevator. 
 
-We used a library called __pandas__ to load the csv file to a dataframe and and after we finished working on it, we load it into the output file.
+We used a library called __pandas__ to load the csv file to a dataframe and after we finished working on it, we load it into the output file.
