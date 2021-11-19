@@ -5,6 +5,7 @@ from Building import Building
 from Elevator import Elevator
 from CallForElevator import CallForElevator
 import json
+import csv
 
 def LoadCalls(path):
     try:
@@ -20,7 +21,7 @@ def LoadBuilding(path):
             my_building = Building(build)
             for my_elev in build['_elevators']:
                 my_building.elev.append(Elevator(my_elev))
-            #my_building.elev.sort(key=lambda x: x[1])
+            #build.close()
         return my_building
     except:
         print("ERROR: This is not a JSON file !")
@@ -33,9 +34,11 @@ def allocateElevator(path1, path2, path3):
     myBuilding = LoadBuilding(path1)
     myCalls = LoadCalls(path2)
     myOut = LoadCalls(path2)
-
+    print(myOut)
     myOut['difference'] = abs(myOut[2]-myOut[3])
     myOut = myOut.sort_values(['difference'], ascending=True)
+    myOut['RunHere'] = range(0,len(myOut))
+    myOut = myOut.set_index(['RunHere'])
     numOfElev = len(myBuilding.elev)
     partition = int(len(myOut) / numOfElev)
     if numOfElev == 1:
@@ -47,10 +50,13 @@ def allocateElevator(path1, path2, path3):
         stop = len(myBuilding.elev)
         for i in range(0,len(myOut),partition):
             if start<stop:
-                myOut.loc[i:i+partition -1 ,5] = sortElevList[start].getID
+                newvalue = sortElevList[start].getID
+                for j in range(i, partition+i):
+                  myOut.at[j,5] = start
+                # myOut.loc[i:(i+partition -1) ,5] = newvalue
             start = start + 1
-       # i = i + partition
     myOut = myOut.drop(['difference'],axis=1)
+    myOut.reset_index(drop=True, inplace=True)
     j=0
     k=partition
     for i in myOut:
@@ -63,7 +69,10 @@ def allocateElevator(path1, path2, path3):
         if len(myBuilding.elev)==j:
             break
     myOut = myOut.sort_values([1])
-    myOut.to_csv(path3, mode='a')
+    myOut.to_csv(path3, index=False, header = False)
+    print(myOut)
+
+
 '''''
     # path 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if len(myBuilding.elev)==1:
@@ -82,4 +91,6 @@ def sumTillNextCall(elevator, call):
 '''''
 
 if __name__ == '__main__':
-    allocateElevator(r'C:\Users\malak\OneDrive\Desktop\New folder\B2.json', r'C:\Users\malak\OneDrive\Desktop\New folder\Calls_a.csv', r'C:\Users\malak\OneDrive\Desktop\New folder\output.csv')
+    allocateElevator(r'C:\Users\malak\OneDrive\Desktop\New folder\B1.json',
+                     r'C:\Users\malak\OneDrive\Desktop\New folder\Calls_a.csv',
+                     r'C:\Users\malak\OneDrive\Desktop\New folder\output.csv')
