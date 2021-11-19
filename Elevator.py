@@ -1,7 +1,3 @@
-import pandas as pd
-import numpy as np
-import Building
-
 class Elevator:
     def __init__(self, Elevator):
         self.getID = Elevator['_id']
@@ -16,18 +12,13 @@ class Elevator:
         self.call = []
 
     def __str__(self):
-        # st = "id = {}, speed ={}, minFloor = {}, maxFloor = {}, closeTime = {}, openTime = {}, startTime = {}, stopTime = {}"\
-        # .format(self.getID, self.getSpeed,self.getMinFloor,self.getMaxFloor,self.getTimeForClose,self.getTimeForOpen,self.getStartTime,self.getStopTime,)
-        # return st
-
-        string = "ID: " , self.getID , ", Speed: " , self.getSpeed, ", Min floor: " ,self.getMinFloor, ", Max floor: " ,self.getMaxFloor, ", Time for close: " ,self.getTimeForClose ,", Time for open: " , self.getTimeForOpen,\
-                 ", Start time: " ,self.getStartTime, ", Stop time: " , self.getStopTime
+        string = "ID: ", self.getID, ", Speed: ", self.getSpeed, ", Min floor: ", self.getMinFloor, \
+                 ", Max floor: ", self.getMaxFloor, ", Time for close: ", self.getTimeForClose,\
+                 ", Time for open: ", self.getTimeForOpen,\
+                 ", Start time: ", self.getStartTime, ", Stop time: ", self.getStopTime
         return string
 
-    def travelTime(self, src, dest):
-        time = self.getTimeForClose + self.getStartTime + (abs(src - dest) / self.getSpeed) \
-               + self.getStopTime + self.getTimeForOpen
-        return time
-
-
-
+    # def travelTime(self, src, dest):
+    #     time = self.getTimeForClose + self.getStartTime + (abs(src - dest) / self.getSpeed) \
+    #            + self.getStopTime + self.getTimeForOpen
+    #     return time
